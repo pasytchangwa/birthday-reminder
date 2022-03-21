@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import data from './data';
+import Items from './component/Items';
+
 
 function App() {
+  const [infos, setInfos] = useState(data)
+  
+  const handleClick = () => {
+    setInfos([])
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <main>
+        <section className='container'>
+          <h3>{infos.length} birthdays today</h3>
+          <Items dates={infos} />
+          <button type='button' onClick={() => handleClick()}>
+            Clear All
+          </button>
+        </section>
+      </main>
+    </>
   );
 }
 
